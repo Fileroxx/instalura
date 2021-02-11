@@ -53,6 +53,5 @@ MenuWrapper.RightSide = styled.div`
     order: 2;
     justify-content: flex-end;
 
-    
-    
 `;
+
