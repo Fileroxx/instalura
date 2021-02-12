@@ -1,6 +1,5 @@
 import { fromPairs } from 'lodash';
 import { createGlobalStyle } from 'styled-components';
-
 // CSS Reset
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -12,6 +11,8 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-family: ${({ theme }) => theme.fontFamily};
   }
+
+  
   /* Full height layout */
   html, body {
     display: flex;
