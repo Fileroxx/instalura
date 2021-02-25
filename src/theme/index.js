@@ -40,10 +40,19 @@ const colors = {
       dark: {},
     },
   };
+
   
   export default {
     colors, 
     typographyVariants,
+    breakpoints: {
+      xs: 0,
+      sm: 576,
+      md: 768,
+      lg: 992,
+      xl: 1200,
+      xxl: 1400,
+    },
     borderRadius: '12px',
     fontFamily: '\'Rubik\', sans-serif',
     transition: '200ms ease-in-out',

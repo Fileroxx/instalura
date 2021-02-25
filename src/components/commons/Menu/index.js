@@ -4,6 +4,9 @@ import { Logo } from '../../../theme/Logo';
 import Text from '../../foundation/Text';
 import { Button } from '../Button/index';
 import { MenuWrapper } from './styles/MenuWrapper';
+import { breakpointsMedia } from '../../../theme/utilis/breakpointsMedia';
+
+
 
 export default function Menu() {
   
@@ -25,11 +28,12 @@ export default function Menu() {
 
 
   return (
+    
       <MenuWrapper>
         <MenuWrapper.LeftSide>    
             <Logo /> 
         </MenuWrapper.LeftSide>
-          <MenuWrapper.CenterSide>      
+          <MenuWrapper.CentralSide>      
               {links.map(function(link) {
                 return (
                   <li key={link.url}>
@@ -39,7 +43,7 @@ export default function Menu() {
                   </li>
                 )
               })}
-          </MenuWrapper.CenterSide>
+          </MenuWrapper.CentralSide>
           <MenuWrapper.RightSide>     
            <Button ghost variant="secondary.main">
             Entrar   
@@ -50,4 +54,5 @@ export default function Menu() {
           </MenuWrapper.RightSide>
       </MenuWrapper>
    )
+   
 }

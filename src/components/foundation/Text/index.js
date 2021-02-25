@@ -1,7 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types'
+import { breakpointsMedia } from '../../../theme/utilis/breakpointsMedia'
 import styled, { css } from 'styled-components';
+import {propToStyle} from '../../../theme/utilis/propToStyle'
 
-export const TextStyleVariantMap = {
+export const TextStyleVariantsMap = {
 
      paragraph1: css`
     font-size: ${({ theme }) => theme.typographyVariants.paragraph1.fontSize};
@@ -18,29 +21,40 @@ export const TextStyleVariantMap = {
 
 }
 
-
-
 const TextBase = styled.span`
-    ${(props) => TextStyleVariantMap[props.variant]}
+    ${(props) => TextStyleVariantsMap[props.variant]}
+    
+    ${propToStyle('textAlign')}
+    ${propToStyle('marginBottom')}
+    ${propToStyle('margin')}
+
+   /* ${function (props) {
+        return propToStyle('textAlign', props)
+    }}
+
+    ${function(props) {
+        return {
+            textAlign: props.textAlign,
+        }
+    }} */
 `;
 
 
-export default function Text({tag, variant, children}) {
+export default function Text({tag, variant, children, ...props}) {
  return(
     <TextBase
         as={tag}
         variant={variant}
+        {...props}
+        //style
+        //classnames
+        // e por aí vai
     >
         {children}
     </TextBase>
  );
 }
 
-Text.propTypes = {
-    tag: PropTypes.string.isRequired,
-    variant: PropTypes.node.isRequired,
-    children: PropTypes.node.isRequired,
-}
 
 Text.defaultProps = {
     tag: 'span',

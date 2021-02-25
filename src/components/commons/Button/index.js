@@ -1,10 +1,12 @@
 import styled, { css } from 'styled-components';
 import get from 'lodash/get';
-import { TextStyleVariantMap } from '../../foundation/Text';
+import { TextStyleVariantsMap } from '../../foundation/Text';
+import { breakpointsMedia } from '../../../theme/utilis/breakpointsMedia';
+import { propToStyle} from '../../../theme/utilis/propToStyle'
 
 const ButtonGhost = css`
-background: transparent;
 color: ${(props) => get(props.theme, `colors.${props.variant}.color`)};
+background: transparent;
 
 `;
 
@@ -15,7 +17,7 @@ const ButtonDefault = css`
         return  get(props.theme, `colors.${props.variant}.color`)
     }};
     color: ${function(props) {
-        return  get(props.theme, `colors.${props.variant}.contrastText`)
+        return get(props.theme, `colors.${props.variant}.contrastText`)
     }};
 `;
 
@@ -28,7 +30,7 @@ export const Button = styled.button`
     opacity: 1;
     border-radius: 8px;
 
-    ${TextStyleVariantMap.smallestException}
+    ${TextStyleVariantsMap.smallestException}
 
     color: white;
     background-color: #D73853;
@@ -39,12 +41,30 @@ export const Button = styled.button`
             return ButtonGhost;
         }
             return ButtonDefault;
-    }}
+    }};
     transition: opacity ${({ theme }) => theme.transition};
     border-radius: ${({ theme }) => theme.borderRadius};
     &:hover
     , &:focus {
         opacity: .5;
     }
+
+    ${breakpointsMedia({
+        xs: css`
+        /*All Devices*/
+        ${TextStyleVariantsMap.smallestException}
+        `,
+        md: css`
+        /*From md breakpoint*/
+        ${TextStyleVariantsMap.paragraph1}
+        `,
+        lg: css`
+        
+            
+        `,
+    })}
+
+    ${propToStyle('margin')}
+    ${propToStyle('display')}
 
 `;

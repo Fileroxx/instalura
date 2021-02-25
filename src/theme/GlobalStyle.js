@@ -1,5 +1,4 @@
-import { fromPairs } from 'lodash';
-import { createGlobalStyle } from 'styled-components';
+import  {createGlobalStyle} from 'styled-components';
 // CSS Reset
 export const GlobalStyle = createGlobalStyle`
     * {
