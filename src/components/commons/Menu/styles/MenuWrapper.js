@@ -70,7 +70,6 @@ MenuWrapper.CentralSide = styled.div`
       order: initial;
       border: none;
       margin: 0;
-      margin-left: 20px;
       padding-top: 0;
       padding-bottom: 0;
     `,
