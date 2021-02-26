@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 import { breakpointsMedia } from '../../../../theme/utilis/breakpointsMedia'
 import { css } from 'styled-components'
+import { propToStyle } from '../../../../theme/utilis/propToStyle'
+
+
 export const Grid = {
     Container: styled.div`
     width: 100%;
@@ -31,6 +34,7 @@ export const Grid = {
         `,
     })}
 
+      ${propToStyle('marginTop')}
     `,
 
     Row: styled.div`
@@ -112,12 +116,19 @@ export const Grid = {
     }}
 
 
-${function({ value }) {
+    ${function({ offset }) {
         if(typeof value === 'number'){
         return css`
         margin-left: ${(100 * offset / 12)}%;
         `
         }
       }}
+   
+    ${propToStyle('display')}
+    ${propToStyle('alignItems')}
+    ${propToStyle('justifyContent')}
+    ${propToStyle('flexDirection')}
+
     `,
+
 };
