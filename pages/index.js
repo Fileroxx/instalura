@@ -1,15 +1,18 @@
 import React from 'react';
 import Menu from '../src/components/commons/Menu';
+import { breakpoints } from '../src/theme/index'
 import Footer from '../src/components/commons/Footer';
 import  Text  from '../src/components/foundation/Text';
 import { Button } from '../src/components/commons/Button'
 import { getRedirectStatus } from 'next/dist/lib/load-custom-routes';
 import { Grid } from '../src/components/foundation/layout/Grid';
-import { Box } from '../src/components/foundation/layout/Box'
-
-
+import { Box } from '../src/components/foundation/layout/Box';
+import  Modal  from '../src/components/commons/Modal/index'
 
 export default function Home() {
+  
+  const [isModalOpen, setModalState] = React.useState(false);
+  
   return(
 
     <Box
@@ -22,6 +25,20 @@ export default function Home() {
         backgroundRepeat="no-repeat"
         backgroundPosition="bottom right"
     >
+      {/*Solid*/}
+
+   <Modal isOpen={isModalOpen}
+   onClose={() => {
+     setModalState(false);
+   }}
+   >
+     <Box
+     backgroundColor="white"
+     data-modal-safe-area="true"
+     >
+     Nosso conteudo pro modal
+     </Box>
+  </Modal>
 
       <Menu />
 
@@ -74,6 +91,10 @@ export default function Home() {
         md: 'initial',
       }}
       display="block"
+      onClick={() => {
+        //isModalOpen = true;
+        setModalState(!isModalOpen);
+      }}
       >
         Cadastrar
       </Button>
