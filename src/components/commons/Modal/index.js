@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 
@@ -32,13 +33,16 @@ const ModalWrapper = styled.div`
 `;
 
 
-function Modal( { isOpen, onClose, children }) {
+function Modal({ isOpen, onClose, children }) {
   return (
 
     <ModalWrapper
      isOpen={isOpen}
-     onClick={() => {
+     onClick={(event) => {
+       const isSafeArea = event.target.closest('[data-modal-safe-area="true"]');
+       if (!isSafeArea) {
         onClose();
+       }
      }}
      >
        <motion.div
@@ -64,5 +68,11 @@ function Modal( { isOpen, onClose, children }) {
     </ModalWrapper>
   );
 }
+
+Modal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  children: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 export default Modal;

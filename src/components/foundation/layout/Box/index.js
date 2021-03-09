@@ -3,14 +3,17 @@ import { propToStyle } from '../../../../theme/utilis/propToStyle'
 
 
 export const Box = styled.div`
+    ${propToStyle('flex')}
     ${propToStyle('display')}
     ${propToStyle('flexDirection')}
     ${propToStyle('justifyContent')}
-    ${propToStyle('flex')}
     ${propToStyle('flexWrap')}
+    ${propToStyle('backgroundColor')}
     ${propToStyle('backgroundImage')}
     ${propToStyle('backgroundRepeat')}
     ${propToStyle('backgroundPosition')}
-    ${propToStyle('backgroundColor')}
+   
+    ${propToStyle('boxShadow')}
+    ${propToStyle('padding')}
 
 `;

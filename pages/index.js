@@ -8,6 +8,7 @@ import { getRedirectStatus } from 'next/dist/lib/load-custom-routes';
 import { Grid } from '../src/components/foundation/layout/Grid';
 import { Box } from '../src/components/foundation/layout/Box';
 import  Modal  from '../src/components/commons/Modal/index'
+import FormCadastro from '../src/patterns/FormCadastro';
 
 export default function Home() {
   
@@ -32,13 +33,9 @@ export default function Home() {
      setModalState(false);
    }}
    >
-     <Box
-     backgroundColor="white"
-     data-modal-safe-area="true"
-     >
-     Nosso conteudo pro modal
-     </Box>
-  </Modal>
+     <FormCadastro />
+    
+    </Modal>
 
       <Menu />
 

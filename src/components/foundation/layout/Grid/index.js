@@ -4,8 +4,7 @@ import { css } from 'styled-components'
 import { propToStyle } from '../../../../theme/utilis/propToStyle'
 
 
-export const Grid = {
-    Container: styled.div`
+const Container = styled.div`
     width: 100%;
     padding-right: 28px;
     padding-left: 28px;
@@ -14,17 +13,17 @@ export const Grid = {
     max-width: initial;
 
     ${breakpointsMedia({
-        xs: css`
-
-        padding-right: 28px;
-        padding-left: 28px;
-        `,
-
-        sm: css`
+       
+       sm: css`
         max-width: 576px;
-        padding-right: 16px;
         `,
-
+        
+        md: css`
+          max-width: 768px;
+          padding-right: 16px;
+          padding-left: 16px;
+        `,
+        
         lg: css`
         max-width: 1160px;
         `,
@@ -35,13 +34,20 @@ export const Grid = {
     })}
 
       ${propToStyle('marginTop')}
-    `,
+    `;
 
+    export const Grid = {
+    Container,
     Row: styled.div`
     display: flex;
     flex-wrap: wrap;
     margin-left: -16px;
     margin-right: -16px;
+
+    ${propToStyle('flex')}
+    ${propToStyle('marginLeft')}
+    ${propToStyle('marginRight')}
+    ${propToStyle('justifyContent')}
 
     `,
     
@@ -52,8 +58,8 @@ export const Grid = {
         flex-grow: 1;
         max-width: 100%;
 
-    ${function({ value }) {
-        if(typeof value === 'number'){
+    ${({ value }) => {
+        if (typeof value === 'number') {
         return css`
         flex-grow: 0;
         flex-shrink: 0;
@@ -112,22 +118,52 @@ export const Grid = {
                 
             `
             : '',       
-        })
+        });
     }}
 
 
-    ${function({ offset }) {
-        if(typeof value === 'number'){
+    ${({ offset }) => {
+        if (typeof value === 'number') {
         return css`
         margin-left: ${(100 * offset / 12)}%;
-        `
-        }
-      }}
+        `;
+      
+    }
+
+    return breakpointsMedia({
+      xs: offset?.xs
+        ? css`
+            margin-left: ${(100 * offset.xs) / 12}%;
+          `
+        : '',
+      sm: offset?.sm
+        ? css`
+            margin-left: ${(100 * offset.sm) / 12}%;
+          `
+        : '',
+      md: offset?.md
+        ? css`
+            margin-left: ${(100 * offset.md) / 12}%;
+          `
+        : '',
+      lg: offset?.lg
+        ? css`
+            margin-left: ${(100 * offset.lg) / 12}%;
+          `
+        : '',
+      xl: offset?.xl
+        ? css`
+            margin-left: ${(100 * offset.xl) / 12}%;
+          `
+        : '',
+    });
+  }}
    
     ${propToStyle('display')}
     ${propToStyle('alignItems')}
     ${propToStyle('justifyContent')}
     ${propToStyle('flexDirection')}
+    ${propToStyle('paddingRight')}
 
     `,
 
