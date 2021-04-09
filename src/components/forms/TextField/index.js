@@ -34,6 +34,7 @@ export default function TextField({
             placeholder={placeholder}
             name={name}
             value={value}
+            onChange={onChange}
           />
         </InputWrapper>
     );

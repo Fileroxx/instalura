@@ -48,6 +48,8 @@ const Container = styled.div`
     ${propToStyle('marginLeft')}
     ${propToStyle('marginRight')}
     ${propToStyle('justifyContent')}
+    ${propToStyle('marginTop')}
+    ${propToStyle('flexDirection')}
 
     `,
     
@@ -160,6 +162,7 @@ const Container = styled.div`
   }}
    
     ${propToStyle('display')}
+    ${propToStyle('order')}
     ${propToStyle('alignItems')}
     ${propToStyle('justifyContent')}
     ${propToStyle('flexDirection')}

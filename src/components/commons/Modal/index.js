@@ -60,19 +60,25 @@ function Modal({ isOpen, onClose, children }) {
        }}
         style={{
           display: 'flex',
-          flex: '1'
+          flex: '1',
         }}
        >
-      {children}
+      {children({
+        'data-modal-safe-area': 'true',
+      })}
        </motion.div>
     </ModalWrapper>
   );
 }
 
 Modal.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  children: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
+	isOpen: PropTypes.bool.isRequired,
+	children: PropTypes.oneOfType([
+		PropTypes.func,
+		PropTypes.node,
+		PropTypes.elementType,
+	]).isRequired,
+	onClose: PropTypes.func.isRequired,
 };
 
 export default Modal;

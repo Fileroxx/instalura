@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import { breakpointsMedia } from '../../../theme/utilis/breakpointsMedia'
 import styled, { css } from 'styled-components';
-import {propToStyle} from '../../../theme/utilis/propToStyle'
+import {propToStyle} from '../../../theme/utilis/propToStyle';
+import Link from '../../commons/Link';
 
 export const TextStyleVariantsMap = {
 
@@ -55,7 +56,29 @@ const TextBase = styled.span`
 `;
 
 
-export default function Text({tag, variant, children, ...props}) {
+export default function Text({
+    tag,
+     variant,
+      children,
+      href,
+      ...props
+    
+    }) {
+
+    if (href) {
+        return (
+            <TextBase
+            as={Link}
+            href={href}
+            variant={variant}
+
+            {...props}
+            >
+                {children}
+            </TextBase>
+        )
+    }
+
  return(
     <TextBase
         as={tag}
@@ -72,6 +95,7 @@ export default function Text({tag, variant, children, ...props}) {
 
 Text.propTypes = {
     tag: PropTypes.string,
+    href: PropTypes.string,
     variant: PropTypes.string,
     children: PropTypes.node,
 }
@@ -81,6 +105,7 @@ Text.defaultProps = {
     tag: 'span',
     variant: 'paragraph1',
     children: null,
+    href:'',
 }
 
 // p
