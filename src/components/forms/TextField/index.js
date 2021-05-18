@@ -10,7 +10,7 @@ const InputWrapper = styled.div`
 `;
 
 const Input = styled(Text)`
-    width: 370px;
+    width: 350px;
     border: 1px solid ${({ theme }) => theme.colors.tertiary.light.color};
     padding: 12px 16px;
     outline: 0;

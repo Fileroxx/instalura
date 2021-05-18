@@ -73,7 +73,7 @@ const ButtonWrapper = styled.button`
     }
 
     ${({ fullWidth }) => fullWidth && css`
-        width: 100%;
+        width: 350px;
     `};
 
     ${propToStyle('margin')}
