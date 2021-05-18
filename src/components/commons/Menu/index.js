@@ -10,7 +10,7 @@ import { breakpointsMedia } from '../../../theme/utilis/breakpointsMedia';
 
 
 
-export default function Menu( {onCadastrarClick} ) {
+export default function Menu( {onCadastrarClick } ) {
   
   
   const links = [

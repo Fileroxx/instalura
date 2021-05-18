@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Text from '../../foundation/Text'
+import { propToStyle } from '../../../theme/utilis/propToStyle';
 
 
 const InputWrapper = styled.div`
@@ -9,7 +10,7 @@ const InputWrapper = styled.div`
 `;
 
 const Input = styled(Text)`
-    width: auto;
+    width: 370px;
     border: 1px solid ${({ theme }) => theme.colors.tertiary.light.color};
     padding: 12px 16px;
     outline: 0;
@@ -26,6 +27,7 @@ export default function TextField({
     name,
     onChange,
     value,
+    ...props
 }) {
     return (
         <InputWrapper>
@@ -35,6 +37,7 @@ export default function TextField({
             name={name}
             value={value}
             onChange={onChange}
+            {...props}
           />
         </InputWrapper>
     );

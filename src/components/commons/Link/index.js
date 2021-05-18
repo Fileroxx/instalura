@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import NextLink from 'next/link';
-import styled from 'styled-components';
-
+import styled, {css} from 'styled-components';
 import get from 'lodash/get'
 
 const StyledLink = styled.a`

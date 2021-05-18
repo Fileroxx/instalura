@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, createContext} from 'react';
 import PropTypes from 'prop-types';
 import FormCadastro from '../../../patterns/FormCadastro';
 import Footer from '../../commons/Footer';
@@ -12,7 +12,7 @@ export const WebsitePageContext = React.createContext({
     },
 });
 
-export default function WebsitePageWrapper({children, pageBoxProps }) {
+export default function WebsitePageWrapper({children, seoProps, pageBoxProps, menuProps, }) {
     const [isModalOpen, setModalState] = React.useState(false);
     return (
         <WebsitePageContext.Provider
@@ -24,6 +24,7 @@ export default function WebsitePageWrapper({children, pageBoxProps }) {
             },
         }}
         >
+     
         <Box
         display="flex"
         flex="1"
@@ -52,7 +53,28 @@ export default function WebsitePageWrapper({children, pageBoxProps }) {
     );
 }
 
+WebsitePageWrapper.defaultProps = {
+    seoProps: {},
+    pageBoxProps: {},
+    menuProps: {
+        display: true,
+    },
+};
 
 WebsitePageWrapper.PropTypes = {
+  
+  
+  seoProps: PropTypes.shape({
+      headTitle: PropTypes.string,
+  }),
+  menuProps: PropTypes.shape({
+      display: PropTypes.bool,
+  }),
+  
+    pageBoxProps: PropTypes.shape({
+        backgroundImage: PropTypes.string,
+        backgroundRepeat: PropTypes.string,
+        backgroundPosition: PropTypes.string,
+    }),
     children: PropTypes.node.isRequired,
 }

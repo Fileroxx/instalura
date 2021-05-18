@@ -1,13 +1,13 @@
 import React from 'react';
-import WebsitePageWrapper from '..';
+import WebsitePageWrapper from '../index';
 import WebsiteGlobalProvider from '../provider';
 
-export default function websitePageHOC(Component, { pageWrapperProps } ) {
-    return () => {
+export default function websitePageHOC(PageComponent, { pageWrapperProps } = { pageWrapperProps: {} }, ) {
+    return(props) => (
         <WebsiteGlobalProvider>
-            <WebsitePageWrapper >
-                <Component />
+            <WebsitePageWrapper {...pageWrapperProps} {...props.pageWrapperProps} >
+                <PageComponent {...props} />
             </WebsitePageWrapper>
         </WebsiteGlobalProvider>
-    };
+    );
 }
